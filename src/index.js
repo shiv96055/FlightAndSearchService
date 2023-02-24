@@ -1,7 +1,9 @@
 const express = require("express");
-const bodyParser = require("body-perser");
+const bodyParser = require("body-parser");
 
 const { PORT } = require('./config/serverConfig');
+
+
 const setupAndStartServer = async () =>{
 
     // crate express object
@@ -9,9 +11,9 @@ const setupAndStartServer = async () =>{
 
     // middle ware
     app.use(bodyParser.json());
-    app.use(bodyParser.urlencode({extended : true}));
+    app.use(bodyParser.urlencoded({extended : true}));
 
-    app.listen(PORT, () => {
+    app.listen(PORT, async () => {
         console.log(`Server Start at ${PORT}`);
        // console.log(process.env);
     });
